@@ -66,10 +66,11 @@ try:
         write_log('Ввод текста письма письма' + '\n')
         browser.find_element_by_xpath('/html/body/div[15]/div[2]/div/div[2]/div[1]/span[1]/span/span').click()
         write_log('Нажатие кнопки "Отправить" ' + '\n')
+        time.sleep(2)
 
 except Exception as err:
    save_screen_func()
 finally:
-    #browser.close()
-    #browser.quit()
+    browser.close()
+    browser.quit()
     write_log("Тест завершен" + '\n')
