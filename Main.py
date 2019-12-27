@@ -9,7 +9,6 @@ path = os.path.dirname(os.path.abspath('Main.py'))
 print(path)
 chrome_driver = path + r"\chromedriver.exe"
 print(chrome_driver)
-#url = r"http://www.mail.ru/"
 url = r"http://mail.ru"
 log_path = path + '\def.log'
 
@@ -23,22 +22,6 @@ def write_log(msg):
     f.write(msg)
     f.close()
 
-# def create_scrdir_func(testname): # функция создаёт папку для скриншотов, по 1 на каждую дату и скрипт
-#     try:
-#         today = datetime.date.today()  # текущая дата в формате даты
-#         todaystr = today.isoformat()   # конвертация в строку вида YYYY-MM-DD
-#         scrdir_today = path+r'\\Screen\\' + todaystr + r'\\' + testname + r'\\'# каталог сохранения скриншотов
-#         logging.log_info('Директория для скриншотов %s' % scrdir_today)
-#         write_log()
-#         if not os.path.exists(scrdir_today): # проверка наличия директории
-#             os.makedirs(scrdir_today)
-#             logging.log_debug('Директория для скриншотов %s создана' % scrdir_today)
-#         else:
-#             logging.log_debug('Проверено, директория для скриншотов %s уже существует' % scrdir_today)
-#     except:
-#         logging.log_warning('Не удалось создать директорию для скриншотов, с ошибками!')
-#     return scrdir_today
-
 def save_screen_func(): # функция создаёт скриншот экрана и сохраняет по пути scrdir_today
     scrname = path + r'\\Screen' + r"\Screen" + time.strftime("%d.%m.%y_%H-%M-%S") + platform.node() + '.png'
     try:
@@ -47,7 +30,6 @@ def save_screen_func(): # функция создаёт скриншот экр�
         #logging.log_info('Скриншот ошибки сохранён в %s' %scrname)
     except:
         write_log("Не удалось сохранить скриншот ошибки по пути")
-        #logging.log_warning('Не удалось сохранить скриншот ошибки по пути %s!' % scrname)
     return
 try:
    browser = webdriver.Chrome(chrome_driver)
